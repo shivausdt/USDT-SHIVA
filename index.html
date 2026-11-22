@@ -92,4 +92,31 @@ alert('Demo request created. No real transaction occurred.');
 }
 </script>
 </body>
+  <div class="card" id="authBox">
+  <h2>USDT SHIVA Account</h2>
+  <input id="authEmail" type="email" placeholder="Email address">
+  <input id="authPassword" type="password" placeholder="Password">
+  <button onclick="signUpUser()">Sign Up</button>
+  <button onclick="signInUser()">Login</button>
+  <p id="authMessage">Please login or create an account.</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = 'https://mtvcsiernvyxbvjgcadt.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_dnCZSzbK3aTWJtWetOn26Q_1jkNOF8K';
+const authClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+async function signUpUser(){
+  const email = document.getElementById('authEmail').value;
+  const password = document.getElementById('authPassword').value;
+  const {error} = await authClient.auth.signUp({email,password});
+  document.getElementById('authMessage').textContent = error ? error.message : 'Signup request sent. Check your email.';
+}
+async function signInUser(){
+  const email = document.getElementById('authEmail').value;
+  const password = document.getElementById('authPassword').value;
+  const {data,error} = await authClient.auth.signInWithPassword({email,password});
+  document.getElementById('authMessage').textContent = error ? error.message : 'Login successful: '+data.user.email;
+}
+</script>
 </html>
