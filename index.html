@@ -1,1 +1,100 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USDT SHIVA</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#06111f;color:#fff;font-family:Arial,sans-serif}
+header{padding:20px;background:#071827;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:23px;font-weight:bold;color:#00e6a0}
+button{border:0;border-radius:12px;padding:13px;background:#00d99a;color:#001b17;font-weight:bold;cursor:pointer}
+nav{display:flex;gap:10px;padding:15px;overflow:auto}
+nav button{white-space:nowrap}
+main{padding:16px;max-width:650px;margin:auto}
+.card{background:#10243a;border:1px solid #1d3b50;border-radius:18px;padding:22px;margin:15px 0}
+small{color:#9aafc2}
+.balance{font-size:36px;color:#00e6a0;margin:15px 0}
+h2{font-size:21px}
+input{width:100%;padding:15px;margin:9px 0;background:#071827;color:white;border:1px solid #34516a;border-radius:10px}
+.action{width:100%;margin-top:10px}
+.page{display:none}
+.page.active{display:block}
+.item{padding:15px 0;border-bottom:1px solid #294052}
+footer{text-align:center;padding:25px;color:#8ca1b5}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">◈ USDT SHIVA</div>
+<button onclick="show('login')">Login</button>
+</header>
+
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('deposit')">Deposit</button>
+<button onclick="show('history')">History</button>
+<button onclick="show('login')">Account</button>
+</nav>
+
+<main>
+<section id="home" class="page active">
+<div class="card">
+<small>DEMO BALANCE</small>
+<div class="balance">0.00 USDT</div>
+<small>Demo display only — no real funds</small>
+</div>
+<div class="card">
+<h2>Welcome to USDT SHIVA</h2>
+<p>Manage your TRC20 USDT account dashboard.</p>
+<button class="action" onclick="show('deposit')">Deposit USDT</button>
+<button class="action" onclick="show('history')">Transaction History</button>
+</div>
+<div class="card">
+<h2>Account Status</h2>
+<p>Verification: Pending</p>
+<p>Network: TRON TRC20</p>
+</div>
+</section>
+
+<section id="deposit" class="page">
+<div class="card">
+<h2>USDT Deposit</h2>
+<p>Network: TRON TRC20</p>
+<p>Real deposits are disabled until blockchain verification is configured.</p>
+<input placeholder="Transaction ID (TX Hash)" id="tx">
+<input placeholder="Amount (USDT)" id="amount" type="number">
+<button class="action" onclick="alert('Demo only. No transaction submitted.')">Submit Demo Request</button>
+</div>
+</section>
+
+<section id="history" class="page">
+<div class="card">
+<h2>Transaction History</h2>
+<div class="item">No transactions yet</div>
+</div>
+</section>
+
+<section id="login" class="page">
+<div class="card">
+<h2>Login / Sign Up</h2>
+<input placeholder="Email address" type="email">
+<input placeholder="Password" type="password">
+<button class="action" onclick="alert('Connect Supabase Auth before using login.')">Continue</button>
+</div>
+</section>
+</main>
+
+<footer>USDT SHIVA © 2026<br>TRON TRC20 Demo Dashboard</footer>
+
+<script>
+function show(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+</script>
+</body>
+</html>
+
